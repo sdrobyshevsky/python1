@@ -2,7 +2,7 @@ import model
 import text
 import view   
 
-def search_contact(): 
+def find_contact(): 
     word = view.input_request(text.input_search_word)
     result = model.find_contact(word)
     view.show_book(result, text.not_find(word))  
@@ -26,15 +26,15 @@ def start():
                 model.add_contact(new_contact) 
                 view.print_message(text.contact_action(new_contact[0], text.operation[0]))   
             case 5:
-                search_contact()  
+                find_contact()  
             case 6:
-                if search_contact():
+                if find_contact():
                     c_id = int(view.input_request(text.input_edit_contact_id)) 
                     new_contact = view.input_contact(text.input_edit_contact)     
                     name = model.edit_contact(c_id, new_contact) 
                     view.print_message(text.contact_action(name, text.operation[1]))  
-            case 7: 
-                if search_contact():
+            case 7:  
+                if find_contact():
                     c_id = int(view.input_request(text.input_del_contact_id)) 
                     name = model.delete_contact(c_id)
                     view.print_message(text.contact_action(name, text.operation[2]))  

@@ -1,8 +1,9 @@
 PATH = 'phones.txt'
 phone_book = {}
+original_book = {}
 
 def open_file():
-    global phone_book, PATH 
+    global phone_book, original_book, PATH 
     with open(PATH, 'r', encoding = 'UTF-8') as file:
         data = file.readlines()
     for i, contact in enumerate(data):
@@ -16,19 +17,24 @@ def save_file():
     for contact in phone_book.values():
         contact = ';'.join(contact)
         data.append(contact)  
+    data = '\n'.join(data)
+    with open(PATH, 'w', encoding = 'UTF-8') as file:
+        file.write(data)  
         
 def add_contact(new_contact: list[str]):
     global phone_book
     c_id = max(phone_book) + 1
     phone_book[c_id] = new_contact
     
-def find_contact(word: str) -> dict[int, list[str]]:
-    result = { }
+def find_contact(word: str) -> dict[int, list[str]]: 
+    global phone_book 
+    result = {} 
     for c_id, contact in phone_book.items():
         for field in contact:
             if word.lower() in field.lower():
                 result[c_id] = contact  
                 break
+    return result             
 
 def input_request(msg: str) -> str:
     return input(msg)
