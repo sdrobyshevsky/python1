@@ -26,11 +26,11 @@ def start():
                 module.add_contact(new_contact) 
                 view.print_message(text.contact_action(new_contact[0], text.operation[0]))   
             case 5:
-                search_contact()
+                search_contact()  
             case 6:
                 if search_contact():
                     c_id = int(view.input_request(text.input_edit_contact_id)) 
-                    new_contact = view.input_contact(text.input_edit_contact)   
+                    new_contact = view.input_contact(text.input_edit_contact)     
                     name = module.edit_contact(c_id, new_contact) 
                     view.print_message(text.contact_action(name, text.operation[1]))  
             case 7: 
