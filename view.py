@@ -33,5 +33,6 @@ def input_contact(msg: str) -> list[str]:
         contact.append(input(input_text)) 
     return contact 
  
-        
-    
+def input_request(msg: str) -> str:
+    return input(msg)       
+     
