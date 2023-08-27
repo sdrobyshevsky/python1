@@ -1,6 +1,5 @@
 PATH = 'phones.txt'
 phone_book = {}
-original_book = {}
 
 def open_file():
     global phone_book, PATH 
